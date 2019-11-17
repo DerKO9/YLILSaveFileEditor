@@ -2,11 +2,44 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YLILSaveFileEditor"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="YLIL Save File Decompressor"
+        SizeToContent="WidthAndHeight"
+        mc:Ignorable="d">
+    <StackPanel Height="25"
+                Margin="5,5,5,5"
+                Orientation="Horizontal">
+        <TextBlock Margin="0,0,5,0"
+                   VerticalAlignment="Center"
+                   Text="{Binding SelectedFileDisplay}"
+                   TextAlignment="Right">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Visible" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsPathSelected}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <Button Name="_loadButton"
+                Width="70"
+                Click="_loadButton_Click"
+                Content="Load" />
+        <Button Name="_decompressButton"
+                Width="80"
+                Margin="5,0,0,0"
+                Click="_decompressButton_Click"
+                Content="Decompress"
+                IsEnabled="False" />
+        <Button Name="_compressButton"
+                Width="70"
+                Margin="5,0,0,0"
+                Click="_compressButton_Click"
+                Content="Compress"
+                IsEnabled="False" />
+    </StackPanel>
 </Window>
